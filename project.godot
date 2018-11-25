@@ -20,6 +20,7 @@ Confirm="*res://scene/Confirm.tscn"
 Hit="*res://scene/Hit.tscn"
 Tada="*res://scene/Tada.tscn"
 JumpSound="*res://scene/JumpSound.tscn"
+BGMusic="*res://scene/BG_Music.tscn"
 
 [display]
 
