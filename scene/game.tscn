@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scene/Ground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprite/cave-bg-emeralds.png" type="Texture" id=2]
+[ext_resource path="res://scene/Dragon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scene/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scene/UI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scene/UI.gd" type="Script" id=6]
+[ext_resource path="res://scene/Ready.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scene/ScreenShake.gd" type="Script" id=8]
+
+[node name="Stage" type="Node"]
+
+[node name="Ground" parent="." index="0" instance=ExtResource( 1 )]
+
+_sections_unfolded = [ "Material" ]
+
+[node name="Background" type="Sprite" parent="Ground" index="2"]
+
+position = Vector2( -6, -96 )
+scale = Vector2( 0.117188, 0.448 )
+texture = ExtResource( 2 )
+
+[node name="Dragon" parent="." index="1" instance=ExtResource( 3 )]
+
+[node name="Player" parent="." index="2" instance=ExtResource( 4 )]
+
+position = Vector2( 160, 480 )
+
+[node name="UI" parent="." index="3" instance=ExtResource( 5 )]
+
+script = ExtResource( 6 )
+
+[node name="Ready" parent="UI" index="2" instance=ExtResource( 7 )]
+
+margin_left = 192.0
+margin_top = 448.0
+margin_right = 192.0
+margin_bottom = 448.0
+
+[node name="Camera" type="Camera2D" parent="." index="4"]
+
+pause_mode = 2
+position = Vector2( 496, 320 )
+scale = Vector2( 27.5, 10 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Pause", "Visibility" ]
+
+[node name="ScreenShake" type="Node" parent="Camera" index="0"]
+
+script = ExtResource( 8 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Camera/ScreenShake" index="0"]
+
+visible = false
+position = Vector2( 496, 320 )
+scale = Vector2( 27.5, 10 )
+color = Color( 1, 0.28125, 0, 1 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="ShakeTween" type="Tween" parent="Camera/ScreenShake" index="1"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="Frequency" type="Timer" parent="Camera/ScreenShake" index="2"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="Duration" type="Timer" parent="Camera/ScreenShake" index="3"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="energy_changed" from="Dragon" to="UI" method="_on_Dragon_energy_changed"]
+
+[connection signal="life_changed" from="Player" to="Camera/ScreenShake" method="_on_Player_life_changed"]
+
+[connection signal="life_changed" from="Player" to="UI" method="_on_Player_life_changed"]
+
+[connection signal="timeout" from="Camera/ScreenShake/Frequency" to="Camera/ScreenShake" method="_on_Frequency_timeout"]
+
+[connection signal="timeout" from="Camera/ScreenShake/Duration" to="Camera/ScreenShake" method="_on_Duration_timeout"]
+
+

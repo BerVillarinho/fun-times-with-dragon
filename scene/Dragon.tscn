@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scene/Dragon.gd" type="Script" id=1]
+[ext_resource path="res://sprite/neck.png" type="Texture" id=2]
+[ext_resource path="res://sprite/body.png" type="Texture" id=3]
+[ext_resource path="res://sprite/upper-head-neutral.png" type="Texture" id=4]
+[ext_resource path="res://sprite/mandible.png" type="Texture" id=5]
+
+[node name="Dragon" type="Node2D"]
+
+position = Vector2( 775, 210 )
+scale = Vector2( 10.2188, 8.5625 )
+script = ExtResource( 1 )
+
+[node name="neck" type="Sprite" parent="." index="0"]
+
+position = Vector2( 1.03226, 14.5455 )
+scale = Vector2( 0.0645163, 0.0909091 )
+texture = ExtResource( 2 )
+
+[node name="body" type="Sprite" parent="." index="1"]
+
+position = Vector2( 1.03226, 14.5455 )
+scale = Vector2( 0.0645163, 0.0909091 )
+texture = ExtResource( 3 )
+
+[node name="head" type="Sprite" parent="." index="2"]
+
+position = Vector2( 1.03226, 14.5455 )
+scale = Vector2( 0.0645163, 0.0909091 )
+z_index = 2
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="mandible" type="Sprite" parent="." index="3"]
+
+position = Vector2( 1.03226, 14.5455 )
+scale = Vector2( 0.0645163, 0.0909091 )
+z_index = 1
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="Mouth" type="Node2D" parent="." index="4"]
+
+position = Vector2( -19.6129, 2.90909 )
+scale = Vector2( 0.0645163, 0.0909091 )
+
+[node name="Jaw" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 0.4
+one_shot = false
+autostart = false
+
+[node name="Fire" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="Jaw" to="." method="_on_Jaw_timeout"]
+
+[connection signal="timeout" from="Fire" to="." method="_on_Fire_timeout"]
+
+

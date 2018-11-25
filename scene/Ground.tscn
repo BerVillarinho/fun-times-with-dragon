@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 9.38045 )
+
+[node name="Ground" type="StaticBody2D"]
+
+position = Vector2( 512, 592 )
+scale = Vector2( 16, 2.5 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="icon" type="Sprite" parent="." index="0"]
+
+z_index = -1
+_sections_unfolded = [ "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 1.2, 0.184605 )
+scale = Vector2( 3.29231, 3.43103 )
+shape = SubResource( 1 )
+
+

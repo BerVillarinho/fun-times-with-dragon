@@ -1,0 +1,31 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=3
+
+[application]
+
+config/name="1-button-challenge"
+run/main_scene="res://scene/menu.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Confirm="*res://scene/Confirm.tscn"
+Hit="*res://scene/Hit.tscn"
+Tada="*res://scene/Tada.tscn"
+JumpSound="*res://scene/JumpSound.tscn"
+
+[display]
+
+window/size/resizable=false
+window/stretch/aspect="expand"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
