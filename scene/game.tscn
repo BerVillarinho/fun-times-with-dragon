@@ -13,7 +13,7 @@
 
 [node name="Ground" parent="." index="0" instance=ExtResource( 1 )]
 
-_sections_unfolded = [ "Material" ]
+_sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="Background" type="Sprite" parent="Ground" index="2"]
 
@@ -25,7 +25,7 @@ texture = ExtResource( 2 )
 
 [node name="Player" parent="." index="2" instance=ExtResource( 4 )]
 
-position = Vector2( 160, 480 )
+position = Vector2( 160, 481 )
 
 [node name="UI" parent="." index="3" instance=ExtResource( 5 )]
 
@@ -104,9 +104,9 @@ autostart = false
 
 [connection signal="energy_changed" from="Dragon" to="UI" method="_on_Dragon_energy_changed"]
 
-[connection signal="life_changed" from="Player" to="Camera/ScreenShake" method="_on_Player_life_changed"]
-
 [connection signal="life_changed" from="Player" to="UI" method="_on_Player_life_changed"]
+
+[connection signal="life_changed" from="Player" to="Camera/ScreenShake" method="_on_Player_life_changed"]
 
 [connection signal="timeout" from="Camera/ScreenShake/Frequency" to="Camera/ScreenShake" method="_on_Frequency_timeout"]
 
