@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	BGMusic.play()
+
 func _input(event):
 	var is_event_press = event is InputEventKey
 	var is_other_press =  event is InputEventMouseButton or event is InputEventJoypadButton
@@ -7,3 +10,4 @@ func _input(event):
 		Confirm.play()
 		get_tree().change_scene("res://scene/game.tscn")
 		queue_free()
+		

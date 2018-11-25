@@ -6,3 +6,10 @@ export_presets.cfg
 
 # Mono-specific ignores
 .mono/
+
+# Project ignores
+1-button-challenge.html
+1-button-challenge.js
+1-button-challenge.pck
+1-button-challenge.png*
+1-button-challenge.wasm
