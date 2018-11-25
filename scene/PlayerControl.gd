@@ -26,12 +26,12 @@ func die():
 
 func _input(event):
 	var is_event_press = event is InputEventKey
-	var is_other_press =  event is InputEventMouseButton or event is InputEventJoypadButton
+	var is_other_press = event is InputEventMouseButton or event is InputEventJoypadButton
 	if (is_event_press and not event.echo) or is_other_press and event.pressed:
 		if is_on_floor():
 			JumpSound.play()
 			motion.y = VERTICAL_SPEED
-	elif is_event_press and not event.pressed:
+	if is_event_press and not event.pressed:
 			if motion.y < -45:
 				motion.y = -45
 
