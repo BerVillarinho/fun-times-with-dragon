@@ -10,4 +10,3 @@ func _input(event):
 		Confirm.play()
 		get_tree().change_scene("res://scene/game.tscn")
 		queue_free()
-		

@@ -9,7 +9,7 @@
 flags = 4
 width = 2048
 
-[node name="WinScreen" type="Control"]
+[node name="WinScreen" type="Control" index="0"]
 
 pause_mode = 2
 anchor_left = 0.0
@@ -106,5 +106,14 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Theme" ]
+
+[node name="Timer" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 

@@ -12,7 +12,7 @@ func _on_Fire_timeout():
 	open_jaw()
 	fire()
 	energy_tick()
-	var new_timeout = rand_range(0.3, 0.7)
+	var new_timeout = rand_range(0.4, 0.7)
 	$Fire.set_wait_time(new_timeout)
 	$Jaw.set_wait_time(new_timeout-0.05)
 
