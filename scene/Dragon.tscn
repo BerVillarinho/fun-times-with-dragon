@@ -6,7 +6,7 @@
 [ext_resource path="res://sprite/upper-head-neutral.png" type="Texture" id=4]
 [ext_resource path="res://sprite/mandible.png" type="Texture" id=5]
 
-[node name="Dragon" type="Node2D"]
+[node name="Dragon" type="Node2D" index="0"]
 
 position = Vector2( 775, 210 )
 scale = Vector2( 10.2188, 8.5625 )
@@ -55,6 +55,13 @@ autostart = false
 [node name="Fire" type="Timer" parent="." index="6"]
 
 process_mode = 1
+wait_time = 0.45
+one_shot = false
+autostart = false
+
+[node name="Burst" type="Timer" parent="." index="7"]
+
+process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
@@ -62,5 +69,7 @@ autostart = false
 [connection signal="timeout" from="Jaw" to="." method="_on_Jaw_timeout"]
 
 [connection signal="timeout" from="Fire" to="." method="_on_Fire_timeout"]
+
+[connection signal="timeout" from="Burst" to="." method="_on_Burst_timeout"]
 
 
