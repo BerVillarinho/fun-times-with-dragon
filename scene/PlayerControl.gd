@@ -45,4 +45,8 @@ func _process(delta):
 #	# Update game logic here.
 	motion.y -= GRAVITY_SPEED
 	motion = move_and_slide(motion, FLOOR_NORMAL)
+	if is_on_floor():
+		$AnimatedSprite.animation = "default"
+	else:
+		$AnimatedSprite.animation = "jump"
 	pass
